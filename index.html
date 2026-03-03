@@ -14,79 +14,109 @@
     .hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(to bottom,#0b0f14,#111827)}
     .hero h2{font-size:60px;font-weight:800;color:#22c55e}
     .hero p{margin-top:20px;font-size:20px;color:#9ca3af;max-width:600px}
-    .btn{margin-top:30px;padding:15px 35px;border:none;border-radius:12px;background:#22c55e;color:#000;font-weight:700;font-size:18px;cursor:pointer}
-    section{padding:80px 40px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}
+    .btn{margin-top:20px;padding:12px 25px;border:none;border-radius:12px;background:#22c55e;color:#000;font-weight:700;font-size:16px;cursor:pointer}
+    section{padding:100px 40px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
     .card{background:#111827;padding:25px;border-radius:20px;box-shadow:0 0 20px rgba(0,0,0,0.3)}
-    .status{display:flex;align-items:center}
-    .dot{width:10px;height:10px;background:#22c55e;border-radius:50%;margin-right:10px}
+    input{width:100%;padding:10px;margin-top:10px;border-radius:10px;border:none;background:#1f2937;color:white}
     footer{text-align:center;padding:30px;background:#020617;color:#6b7280}
+    .status-box{display:flex;align-items:center;font-size:18px}
+    .dot{width:12px;height:12px;border-radius:50%;margin-right:10px}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Corellia Cannabis Club</h1>
-    <nav>
-      <a href="#features">Features</a>
-      <a href="#news">News</a>
-      <a href="#status">Server Status</a>
-      <a href="#download">Download</a>
-    </nav>
-  </header>
 
-  <div class="hero">
-    <h2>Willkommen auf Corellia</h2>
-    <p>Das ultimative MMO-Erlebnis im Corellia Cannabis Club Universum. Baue dein Imperium auf, tritt Clans bei und dominiere die Wirtschaft.</p>
-    <button class="btn">Jetzt Spielen</button>
+<header>
+  <h1>Corellia Cannabis Club</h1>
+  <nav>
+    <a href="#login">Login</a>
+    <a href="#register">Register</a>
+    <a href="#status">Server</a>
+    <a href="#download">Download</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h2>Willkommen auf Corellia</h2>
+  <p>Das ultimative MMO-Erlebnis im Corellia Cannabis Club Universum.</p>
+  <button class="btn" onclick="scrollToDownload()">Jetzt Spielen</button>
+</div>
+
+<section id="login">
+  <h2>Login</h2>
+  <div class="card" style="max-width:400px">
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Passwort">
+    <button class="btn" onclick="fakeLogin()">Einloggen</button>
+    <p id="loginMsg" style="margin-top:10px;color:#22c55e"></p>
   </div>
+</section>
 
-  <section id="features">
-    <h2>Game Features</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Clan System</h3>
-        <p>Gründe oder trete einem Clan bei und kontrolliere Territorien.</p>
-      </div>
-      <div class="card">
-        <h3>Player Economy</h3>
-        <p>Vollständig spielergesteuerter Marktplatz.</p>
-      </div>
-      <div class="card">
-        <h3>Open World</h3>
-        <p>Erkunde eine riesige Online-Welt.</p>
-      </div>
-    </div>
-  </section>
+<section id="register">
+  <h2>Register</h2>
+  <div class="card" style="max-width:400px">
+    <input type="text" placeholder="Username">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Passwort">
+    <button class="btn" onclick="fakeRegister()">Account erstellen</button>
+    <p id="registerMsg" style="margin-top:10px;color:#22c55e"></p>
+  </div>
+</section>
 
-  <section id="news">
-    <h2>Latest News</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Update 0.1</h3>
-        <p>Server Stabilität verbessert.</p>
-      </div>
-      <div class="card">
-        <h3>Neue Map</h3>
-        <p>Downtown Corellia ist jetzt verfügbar.</p>
-      </div>
-    </div>
-  </section>
+<section id="status">
+  <h2>Server Status (Live)</h2>
+  <div class="card status-box">
+    <div id="statusDot" class="dot"></div>
+    <span id="serverText"></span>
+  </div>
+</section>
 
-  <section id="status">
-    <h2>Server Status</h2>
-    <div class="status">
-      <div class="dot"></div>
-      <p>Online</p>
-    </div>
-  </section>
+<section id="download">
+  <h2>Game Launcher Download</h2>
+  <div class="card" style="max-width:500px">
+    <p>Lade hier den offiziellen Corellia Launcher herunter:</p>
+    <button class="btn" onclick="downloadLauncher()">Launcher herunterladen</button>
+  </div>
+</section>
 
-  <section id="download">
-    <h2>Download</h2>
-    <button class="btn">Client Download</button>
-  </section>
+<footer>
+  <p>© 2026 Corellia Cannabis Club MMO</p>
+</footer>
 
-  <footer>
-    <p>© 2026 Corellia Cannabis Club MMO</p>
-  </footer>
+<script>
+  function fakeLogin(){
+    document.getElementById('loginMsg').innerText = "Login erfolgreich (Demo)";
+  }
+
+  function fakeRegister(){
+    document.getElementById('registerMsg').innerText = "Account erstellt (Demo)";
+  }
+
+  function downloadLauncher(){
+    alert("Hier würdest du später deine .exe Datei verlinken.");
+  }
+
+  function scrollToDownload(){
+    document.getElementById('download').scrollIntoView({behavior:'smooth'});
+  }
+
+  function updateServerStatus(){
+    const online = Math.random() > 0.2; // 80% Chance online (Demo)
+    const dot = document.getElementById('statusDot');
+    const text = document.getElementById('serverText');
+
+    if(online){
+      dot.style.background = '#22c55e';
+      text.innerText = "Server Online";
+    } else {
+      dot.style.background = '#ef4444';
+      text.innerText = "Server Offline";
+    }
+  }
+
+  updateServerStatus();
+  setInterval(updateServerStatus, 10000);
+</script>
+
 </body>
 </html>
