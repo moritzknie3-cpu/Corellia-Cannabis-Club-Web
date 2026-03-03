@@ -1,217 +1,211 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Corellia Cannabis Club</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{background:#05070d;color:#e5e7eb;font-family:'Inter',sans-serif;overflow-x:hidden}
-    canvas{position:fixed;top:0;left:0;z-index:-1}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corellia Cannabis Club | Imperiale Elite</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
 
-    header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:15px 40px;
-      background:rgba(0,0,0,0.7);
-      backdrop-filter:blur(8px);
-      position:fixed;
-      width:100%;
-      z-index:10
-    }
+<style>
+body {
+    margin:0;
+    font-family:'Orbitron', sans-serif;
+    background: radial-gradient(circle at top, #0a0a0f 0%, #000000 60%);
+    color:white;
+    scroll-behavior:smooth;
+}
 
-    .logo-container{
-      display:flex;
-      align-items:center;
-      gap:15px;
-    }
+header {
+    position:fixed;
+    width:100%;
+    top:0;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(8px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    z-index:1000;
+    border-bottom:1px solid #1f1f1f;
+}
 
-    .logo-container img{
-      height:60px;
-      border-radius:10px;
-      box-shadow:0 0 20px rgba(34,197,94,0.6);
-    }
+header img {
+    height:50px;
+}
 
-    header h1{
-      color:#22c55e;
-      font-family:'Orbitron',sans-serif;
-      font-size:20px;
-    }
+nav a {
+    margin:0 15px;
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    transition:0.3s;
+}
 
-    nav a{margin-left:20px;text-decoration:none;color:#e5e7eb;font-weight:500}
+nav a:hover {
+    color:#00ff88;
+}
 
-    .hero{
-      height:100vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:20px
-    }
+.lang-btn {
+    cursor:pointer;
+    padding:5px 10px;
+    border:1px solid #00ff88;
+    border-radius:5px;
+    font-size:12px;
+}
 
-    .hero-logo{
-      width:300px;
-      margin-bottom:30px;
-      box-shadow:0 0 40px rgba(34,197,94,0.7);
-      border-radius:20px;
-    }
+.hero {
+    margin-top:120px;
+    text-align:center;
+    padding:60px 20px;
+}
 
-    .hero h2{
-      font-size:50px;
-      font-family:'Orbitron',sans-serif;
-      color:#22c55e;
-      text-shadow:0 0 20px #22c55e
-    }
+.hero img {
+    width:320px;
+    max-width:90%;
+    filter: drop-shadow(0 0 25px #00ff88);
+}
 
-    .btn{
-      margin-top:20px;
-      padding:12px 30px;
-      border:none;
-      border-radius:12px;
-      background:#22c55e;
-      color:#000;
-      font-weight:700;
-      cursor:pointer;
-      transition:0.3s
-    }
+.hero h1 {
+    font-size:42px;
+    margin-top:20px;
+    background:linear-gradient(90deg,#00ff88,#1aff00);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
 
-    .btn:hover{transform:scale(1.05)}
+.section {
+    padding:80px 20px;
+    text-align:center;
+    max-width:1100px;
+    margin:auto;
+}
 
-    section{padding:100px 40px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
-    .card{background:rgba(17,24,39,0.8);padding:25px;border-radius:20px;backdrop-filter:blur(5px);box-shadow:0 0 30px rgba(34,197,94,0.2)}
-    input{width:100%;padding:10px;margin-top:10px;border-radius:10px;border:none;background:#1f2937;color:white}
-    footer{text-align:center;padding:30px;background:#020617;color:#6b7280}
-    .status-box{display:flex;align-items:center;font-size:18px}
-    .dot{width:12px;height:12px;border-radius:50%;margin-right:10px}
-    #dashboard{display:none}
-  </style>
+.section h2 {
+    font-size:28px;
+    margin-bottom:30px;
+    color:#00ff88;
+}
+
+.card {
+    background:rgba(20,20,20,0.9);
+    padding:25px;
+    margin:20px;
+    border-radius:12px;
+    border:1px solid #1f1f1f;
+    box-shadow:0 0 15px rgba(0,255,136,0.1);
+}
+
+.grid {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+button {
+    background:#00ff88;
+    border:none;
+    padding:12px 25px;
+    margin:10px;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover {
+    background:#1aff00;
+}
+
+footer {
+    text-align:center;
+    padding:30px;
+    font-size:12px;
+    opacity:0.6;
+}
+
+.cannabis-glow {
+    color:#00ff88;
+    text-shadow:0 0 15px #00ff88;
+}
+</style>
 </head>
 <body>
 
-<canvas id="particles"></canvas>
-
 <header>
-  <div class="logo-container">
-    <img src="logo.png" alt="Corellia Logo">
-    <h1>Corellia Cannabis Club</h1>
-  </div>
-  <nav>
-    <a href="#login">Login</a>
-    <a href="#register">Register</a>
-    <a href="#status">Server</a>
-    <a href="#download">Download</a>
-  </nav>
+    <img src="logo.png" alt="CCC Logo">
+    <nav>
+        <a href="#about" data-de="Gilde" data-en="Guild">Gilde</a>
+        <a href="#pve" data-de="PvE" data-en="PvE">PvE</a>
+        <a href="#pvp" data-de="PvP" data-en="PvP">PvP</a>
+        <a href="#join" data-de="Bewerbung" data-en="Apply">Bewerbung</a>
+    </nav>
+    <div class="lang-btn" onclick="toggleLang()">DE / EN</div>
 </header>
 
-<div class="hero" id="hero">
-  <img src="logo.png" class="hero-logo" alt="Corellia Logo">
-  <h2>ENTER CORELLIA</h2>
-  <button class="btn" onclick="scrollToDownload()">Jetzt Spielen</button>
-</div>
+<section class="hero">
+    <img src="logo.png" alt="Corellia Cannabis Club">
+    <h1 data-de="Elite des Imperiums" data-en="Elite of the Empire">Elite des Imperiums</h1>
+    <p data-de="Disziplin. Dominanz. Gemeinschaft." data-en="Discipline. Dominance. Brotherhood.">
+        Disziplin. Dominanz. Gemeinschaft.
+    </p>
+    <p class="cannabis-glow" data-de="Tulak Hord • Imperium • Deutsch" data-en="Tulak Hord • Empire • German">
+        Tulak Hord • Imperium • Deutsch
+    </p>
+</section>
 
-<section id="dashboard">
-  <h2 style="font-family:Orbitron">Spieler Dashboard</h2>
-  <div class="grid">
+<section class="section" id="about">
+    <h2 data-de="Über Uns" data-en="About Us">Über Uns</h2>
     <div class="card">
-      <h3>Willkommen, <span id="playerName"></span></h3>
-      <p>Account Status: Aktiv</p>
+        <p data-de="Wir sind die Elite der Elite auf Tulak Hord. Endgame-orientiert in PvE & PvP."
+           data-en="We are the elite of the elite on Tulak Hord. Endgame focused in PvE & PvP.">
+           Wir sind die Elite der Elite auf Tulak Hord. Endgame-orientiert in PvE & PvP.
+        </p>
+        <p class="cannabis-glow" data-de="Stilvoller Cannabis-Flair als Zeichen unserer Gemeinschaft."
+           data-en="Stylish cannabis flair as symbol of our unity.">
+           Stilvoller Cannabis-Flair als Zeichen unserer Gemeinschaft.
+        </p>
     </div>
-    <div class="card">
-      <h3>Charakter Level</h3>
-      <p id="playerLevel"></p>
+</section>
+
+<section class="section" id="pve">
+    <h2>PvE Division</h2>
+    <div class="grid">
+        <div class="card">Operations</div>
+        <div class="card">Nightmare Content</div>
+        <div class="card">Progress Raids</div>
     </div>
-  </div>
-  <button class="btn" onclick="logout()">Logout</button>
 </section>
 
-<section id="login">
-  <h2 style="font-family:Orbitron">Login</h2>
-  <div class="card" style="max-width:400px">
-    <input type="text" id="loginUser" placeholder="Username">
-    <input type="password" id="loginPass" placeholder="Passwort">
-    <button class="btn" onclick="login()">Einloggen</button>
-    <p id="loginMsg" style="margin-top:10px;color:#22c55e"></p>
-  </div>
+<section class="section" id="pvp">
+    <h2>PvP Division</h2>
+    <div class="grid">
+        <div class="card">Ranked Arenas</div>
+        <div class="card">Warzones</div>
+        <div class="card">Training & Taktik</div>
+    </div>
 </section>
 
-<section id="register">
-  <h2 style="font-family:Orbitron">Register</h2>
-  <div class="card" style="max-width:400px">
-    <input type="text" id="regUser" placeholder="Username">
-    <input type="password" id="regPass" placeholder="Passwort">
-    <button class="btn" onclick="register()">Account erstellen</button>
-    <p id="registerMsg" style="margin-top:10px;color:#22c55e"></p>
-  </div>
-</section>
-
-<section id="status">
-  <h2 style="font-family:Orbitron">Server Status (Simuliert)</h2>
-  <div class="card status-box">
-    <div id="statusDot" class="dot"></div>
-    <span id="serverText"></span>
-  </div>
-</section>
-
-<section id="download">
-  <h2 style="font-family:Orbitron">Launcher Download</h2>
-  <div class="card" style="max-width:500px">
-    <button class="btn" onclick="downloadLauncher()">Launcher herunterladen</button>
-  </div>
+<section class="section" id="join">
+    <h2 data-de="Bewirb Dich" data-en="Apply Now">Bewirb Dich</h2>
+    <p data-de="Tritt unserem Imperium bei und werde Teil der Elite."
+       data-en="Join our empire and become part of the elite.">
+       Tritt unserem Imperium bei und werde Teil der Elite.
+    </p>
+    <button onclick="window.open('https://discord.gg/', '_blank')">Discord</button>
 </section>
 
 <footer>
-  <p>© 2026 Corellia Cannabis Club MMO</p>
+    © 2026 Corellia Cannabis Club – Tulak Hord
 </footer>
 
 <script>
-function register(){
-  const user=document.getElementById('regUser').value;
-  const pass=document.getElementById('regPass').value;
-  if(user&&pass){
-    localStorage.setItem('ccc_user',user);
-    localStorage.setItem('ccc_pass',pass);
-    localStorage.setItem('ccc_level',Math.floor(Math.random()*50)+1);
-    document.getElementById('registerMsg').innerText="Account gespeichert";
-  }
+let currentLang = 'de';
+function toggleLang(){
+    currentLang = currentLang === 'de' ? 'en' : 'de';
+    document.querySelectorAll('[data-de]').forEach(el => {
+        el.innerText = el.getAttribute('data-' + currentLang);
+    });
 }
-
-function login(){
-  const user=document.getElementById('loginUser').value;
-  const pass=document.getElementById('loginPass').value;
-  if(user===localStorage.getItem('ccc_user')&&pass===localStorage.getItem('ccc_pass')){
-    document.getElementById('dashboard').style.display='block';
-    document.getElementById('hero').style.display='none';
-    document.getElementById('playerName').innerText=user;
-    document.getElementById('playerLevel').innerText=localStorage.getItem('ccc_level');
-    window.scrollTo(0,0);
-  }else{
-    document.getElementById('loginMsg').innerText="Falsche Login-Daten";
-  }
-}
-
-function logout(){location.reload();}
-function downloadLauncher(){alert("Hier deine echte Launcher-Datei verlinken.");}
-function scrollToDownload(){document.getElementById('download').scrollIntoView({behavior:'smooth'});}
-function updateServerStatus(){
-  const online=Math.random()>0.2;
-  const dot=document.getElementById('statusDot');
-  const text=document.getElementById('serverText');
-  if(online){dot.style.background='#22c55e';text.innerText='Server Online';}
-  else{dot.style.background='#ef4444';text.innerText='Server Offline';}
-}
-updateServerStatus();setInterval(updateServerStatus,10000);
-
-const canvas=document.getElementById('particles');
-const ctx=canvas.getContext('2d');
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-let particles=[];
-for(let i=0;i<100;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,size:Math.random()*2,speed:Math.random()*0.5});}
-function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#22c55e';particles.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();p.y+=p.speed;if(p.y>canvas.height)p.y=0;});requestAnimationFrame(animate);}animate();
 </script>
 
 </body>
