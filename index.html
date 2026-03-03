@@ -9,14 +9,77 @@
     *{margin:0;padding:0;box-sizing:border-box}
     body{background:#05070d;color:#e5e7eb;font-family:'Inter',sans-serif;overflow-x:hidden}
     canvas{position:fixed;top:0;left:0;z-index:-1}
-    header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);position:fixed;width:100%;z-index:10}
-    header h1{color:#22c55e;font-family:'Orbitron',sans-serif}
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 40px;
+      background:rgba(0,0,0,0.7);
+      backdrop-filter:blur(8px);
+      position:fixed;
+      width:100%;
+      z-index:10
+    }
+
+    .logo-container{
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
+
+    .logo-container img{
+      height:60px;
+      border-radius:10px;
+      box-shadow:0 0 20px rgba(34,197,94,0.6);
+    }
+
+    header h1{
+      color:#22c55e;
+      font-family:'Orbitron',sans-serif;
+      font-size:20px;
+    }
+
     nav a{margin-left:20px;text-decoration:none;color:#e5e7eb;font-weight:500}
-    .hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px}
-    .hero h2{font-size:60px;font-family:'Orbitron',sans-serif;color:#22c55e;text-shadow:0 0 20px #22c55e}
-    .hero p{margin-top:20px;font-size:20px;color:#cbd5e1;max-width:600px}
-    .btn{margin-top:20px;padding:12px 30px;border:none;border-radius:12px;background:#22c55e;color:#000;font-weight:700;cursor:pointer;transition:0.3s}
+
+    .hero{
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px
+    }
+
+    .hero-logo{
+      width:300px;
+      margin-bottom:30px;
+      box-shadow:0 0 40px rgba(34,197,94,0.7);
+      border-radius:20px;
+    }
+
+    .hero h2{
+      font-size:50px;
+      font-family:'Orbitron',sans-serif;
+      color:#22c55e;
+      text-shadow:0 0 20px #22c55e
+    }
+
+    .btn{
+      margin-top:20px;
+      padding:12px 30px;
+      border:none;
+      border-radius:12px;
+      background:#22c55e;
+      color:#000;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.3s
+    }
+
     .btn:hover{transform:scale(1.05)}
+
     section{padding:100px 40px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
     .card{background:rgba(17,24,39,0.8);padding:25px;border-radius:20px;backdrop-filter:blur(5px);box-shadow:0 0 30px rgba(34,197,94,0.2)}
@@ -32,7 +95,10 @@
 <canvas id="particles"></canvas>
 
 <header>
-  <h1>Corellia Cannabis Club</h1>
+  <div class="logo-container">
+    <img src="logo.png" alt="Corellia Logo">
+    <h1>Corellia Cannabis Club</h1>
+  </div>
   <nav>
     <a href="#login">Login</a>
     <a href="#register">Register</a>
@@ -42,8 +108,8 @@
 </header>
 
 <div class="hero" id="hero">
+  <img src="logo.png" class="hero-logo" alt="Corellia Logo">
   <h2>ENTER CORELLIA</h2>
-  <p>Ein Sci-Fi MMO mit Wirtschaft, Clans und Machtkämpfen.</p>
   <button class="btn" onclick="scrollToDownload()">Jetzt Spielen</button>
 </div>
 
@@ -57,10 +123,6 @@
     <div class="card">
       <h3>Charakter Level</h3>
       <p id="playerLevel"></p>
-    </div>
-    <div class="card">
-      <h3>Clan</h3>
-      <p>Kein Clan beigetreten</p>
     </div>
   </div>
   <button class="btn" onclick="logout()">Logout</button>
@@ -80,7 +142,6 @@
   <h2 style="font-family:Orbitron">Register</h2>
   <div class="card" style="max-width:400px">
     <input type="text" id="regUser" placeholder="Username">
-    <input type="email" placeholder="Email">
     <input type="password" id="regPass" placeholder="Passwort">
     <button class="btn" onclick="register()">Account erstellen</button>
     <p id="registerMsg" style="margin-top:10px;color:#22c55e"></p>
@@ -107,75 +168,50 @@
 </footer>
 
 <script>
-  function register(){
-    const user = document.getElementById('regUser').value;
-    const pass = document.getElementById('regPass').value;
-    if(user && pass){
-      localStorage.setItem('ccc_user', user);
-      localStorage.setItem('ccc_pass', pass);
-      localStorage.setItem('ccc_level', Math.floor(Math.random()*50)+1);
-      document.getElementById('registerMsg').innerText = "Account gespeichert (LocalStorage Demo)";
-    }
+function register(){
+  const user=document.getElementById('regUser').value;
+  const pass=document.getElementById('regPass').value;
+  if(user&&pass){
+    localStorage.setItem('ccc_user',user);
+    localStorage.setItem('ccc_pass',pass);
+    localStorage.setItem('ccc_level',Math.floor(Math.random()*50)+1);
+    document.getElementById('registerMsg').innerText="Account gespeichert";
   }
+}
 
-  function login(){
-    const user = document.getElementById('loginUser').value;
-    const pass = document.getElementById('loginPass').value;
-    if(user === localStorage.getItem('ccc_user') && pass === localStorage.getItem('ccc_pass')){
-      showDashboard(user);
-    } else {
-      document.getElementById('loginMsg').innerText = "Falsche Login-Daten";
-    }
-  }
-
-  function showDashboard(user){
+function login(){
+  const user=document.getElementById('loginUser').value;
+  const pass=document.getElementById('loginPass').value;
+  if(user===localStorage.getItem('ccc_user')&&pass===localStorage.getItem('ccc_pass')){
     document.getElementById('dashboard').style.display='block';
     document.getElementById('hero').style.display='none';
     document.getElementById('playerName').innerText=user;
     document.getElementById('playerLevel').innerText=localStorage.getItem('ccc_level');
     window.scrollTo(0,0);
+  }else{
+    document.getElementById('loginMsg').innerText="Falsche Login-Daten";
   }
+}
 
-  function logout(){
-    location.reload();
-  }
+function logout(){location.reload();}
+function downloadLauncher(){alert("Hier deine echte Launcher-Datei verlinken.");}
+function scrollToDownload(){document.getElementById('download').scrollIntoView({behavior:'smooth'});}
+function updateServerStatus(){
+  const online=Math.random()>0.2;
+  const dot=document.getElementById('statusDot');
+  const text=document.getElementById('serverText');
+  if(online){dot.style.background='#22c55e';text.innerText='Server Online';}
+  else{dot.style.background='#ef4444';text.innerText='Server Offline';}
+}
+updateServerStatus();setInterval(updateServerStatus,10000);
 
-  function downloadLauncher(){
-    alert("Hier kannst du später deine echte Launcher-Datei (.exe) verlinken.");
-  }
-
-  function scrollToDownload(){
-    document.getElementById('download').scrollIntoView({behavior:'smooth'});
-  }
-
-  function updateServerStatus(){
-    const online = Math.random() > 0.2;
-    const dot = document.getElementById('statusDot');
-    const text = document.getElementById('serverText');
-    if(online){dot.style.background='#22c55e';text.innerText='Server Online';}
-    else{dot.style.background='#ef4444';text.innerText='Server Offline';}
-  }
-  updateServerStatus();
-  setInterval(updateServerStatus,10000);
-
-  const canvas=document.getElementById('particles');
-  const ctx=canvas.getContext('2d');
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
-  let particles=[];
-  for(let i=0;i<100;i++){
-    particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,size:Math.random()*2,speed:Math.random()*0.5});
-  }
-  function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle='#22c55e';
-    particles.forEach(p=>{
-      ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();
-      p.y+=p.speed;if(p.y>canvas.height)p.y=0;
-    });
-    requestAnimationFrame(animate);
-  }
-  animate();
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let particles=[];
+for(let i=0;i<100;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,size:Math.random()*2,speed:Math.random()*0.5});}
+function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#22c55e';particles.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();p.y+=p.speed;if(p.y>canvas.height)p.y=0;});requestAnimationFrame(animate);}animate();
 </script>
 
 </body>
