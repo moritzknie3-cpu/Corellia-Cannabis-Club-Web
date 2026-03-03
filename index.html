@@ -10,9 +10,28 @@
 body {
     margin:0;
     font-family:'Orbitron', sans-serif;
-    background: radial-gradient(circle at top, #0a0a0f 0%, #000000 60%);
+    background:black;
     color:white;
-    scroll-behavior:smooth;
+    overflow-x:hidden;
+}
+
+/* Animated Starfield */
+body::before {
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:url('https://www.transparenttextures.com/patterns/stardust.png');
+    animation:moveStars 200s linear infinite;
+    opacity:0.4;
+    z-index:-1;
+}
+
+@keyframes moveStars {
+    from {background-position:0 0;}
+    to {background-position:10000px 5000px;}
 }
 
 header {
@@ -20,30 +39,23 @@ header {
     width:100%;
     top:0;
     background:rgba(0,0,0,0.85);
-    backdrop-filter:blur(8px);
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding:15px 40px;
     z-index:1000;
-    border-bottom:1px solid #1f1f1f;
 }
 
-header img {
-    height:50px;
-}
+header img {height:50px;}
 
 nav a {
     margin:0 15px;
     color:white;
     text-decoration:none;
     font-size:14px;
-    transition:0.3s;
 }
 
-nav a:hover {
-    color:#00ff88;
-}
+nav a:hover {color:#00ff88;}
 
 .lang-btn {
     cursor:pointer;
@@ -61,13 +73,11 @@ nav a:hover {
 
 .hero img {
     width:320px;
-    max-width:90%;
     filter: drop-shadow(0 0 25px #00ff88);
 }
 
 .hero h1 {
     font-size:42px;
-    margin-top:20px;
     background:linear-gradient(90deg,#00ff88,#1aff00);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
@@ -80,132 +90,104 @@ nav a:hover {
     margin:auto;
 }
 
-.section h2 {
-    font-size:28px;
-    margin-bottom:30px;
-    color:#00ff88;
-}
+.section h2 {color:#00ff88; margin-bottom:30px;}
 
 .card {
     background:rgba(20,20,20,0.9);
     padding:25px;
-    margin:20px;
+    margin:15px;
     border-radius:12px;
     border:1px solid #1f1f1f;
-    box-shadow:0 0 15px rgba(0,255,136,0.1);
 }
 
-.grid {
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-}
+.grid {display:flex; flex-wrap:wrap; justify-content:center;}
 
-button {
-    background:#00ff88;
-    border:none;
-    padding:12px 25px;
-    margin:10px;
+/* Rank Structure */
+.rank {
+    margin:10px 0;
+    padding:10px;
+    border:1px solid #00ff88;
     border-radius:6px;
-    font-weight:bold;
+}
+
+/* Progress Bars */
+.progress-container {margin:15px 0;}
+.progress-bar {
+    background:#1f1f1f;
+    border-radius:20px;
+    overflow:hidden;
+}
+.progress-fill {
+    height:20px;
+    background:#00ff88;
+}
+
+/* Gallery */
+.gallery img {
+    width:300px;
+    margin:10px;
+    border-radius:10px;
     cursor:pointer;
     transition:0.3s;
 }
+.gallery img:hover {transform:scale(1.05);}
 
-button:hover {
-    background:#1aff00;
-}
-
-footer {
-    text-align:center;
-    padding:30px;
-    font-size:12px;
-    opacity:0.6;
-}
-
-.cannabis-glow {
-    color:#00ff88;
-    text-shadow:0 0 15px #00ff88;
-}
+footer {text-align:center; padding:30px; opacity:0.6;}
 </style>
 </head>
 <body>
 
 <header>
-    <img src="logo.png" alt="CCC Logo">
-    <nav>
-        <a href="#about" data-de="Gilde" data-en="Guild">Gilde</a>
-        <a href="#pve" data-de="PvE" data-en="PvE">PvE</a>
-        <a href="#pvp" data-de="PvP" data-en="PvP">PvP</a>
-        <a href="#join" data-de="Bewerbung" data-en="Apply">Bewerbung</a>
-    </nav>
-    <div class="lang-btn" onclick="toggleLang()">DE / EN</div>
+<img src="logo.png" alt="CCC Logo">
+<nav>
+<a href="#ranks">Ränge</a>
+<a href="#progress">Progress</a>
+<a href="#gallery">Galerie</a>
+</nav>
+<div class="lang-btn" onclick="toggleLang()">DE / EN</div>
 </header>
 
 <section class="hero">
-    <img src="logo.png" alt="Corellia Cannabis Club">
-    <h1 data-de="Elite des Imperiums" data-en="Elite of the Empire">Elite des Imperiums</h1>
-    <p data-de="Disziplin. Dominanz. Gemeinschaft." data-en="Discipline. Dominance. Brotherhood.">
-        Disziplin. Dominanz. Gemeinschaft.
-    </p>
-    <p class="cannabis-glow" data-de="Tulak Hord • Imperium • Deutsch" data-en="Tulak Hord • Empire • German">
-        Tulak Hord • Imperium • Deutsch
-    </p>
+<img src="logo.png" alt="Corellia Cannabis Club">
+<h1>Elite des Imperiums</h1>
+<p>Tulak Hord • Imperium • Deutsch</p>
 </section>
 
-<section class="section" id="about">
-    <h2 data-de="Über Uns" data-en="About Us">Über Uns</h2>
-    <div class="card">
-        <p data-de="Wir sind die Elite der Elite auf Tulak Hord. Endgame-orientiert in PvE & PvP."
-           data-en="We are the elite of the elite on Tulak Hord. Endgame focused in PvE & PvP.">
-           Wir sind die Elite der Elite auf Tulak Hord. Endgame-orientiert in PvE & PvP.
-        </p>
-        <p class="cannabis-glow" data-de="Stilvoller Cannabis-Flair als Zeichen unserer Gemeinschaft."
-           data-en="Stylish cannabis flair as symbol of our unity.">
-           Stilvoller Cannabis-Flair als Zeichen unserer Gemeinschaft.
-        </p>
-    </div>
+<section class="section" id="ranks">
+<h2>Imperiale Rangstruktur</h2>
+<div class="rank">Dunkler Rat</div>
+<div class="rank">Imperiale Offiziere</div>
+<div class="rank">Elite-Gardisten</div>
+<div class="rank">Kriegsveteranen</div>
+<div class="rank">Rekruten</div>
 </section>
 
-<section class="section" id="pve">
-    <h2>PvE Division</h2>
-    <div class="grid">
-        <div class="card">Operations</div>
-        <div class="card">Nightmare Content</div>
-        <div class="card">Progress Raids</div>
-    </div>
+<section class="section" id="progress">
+<h2>Raid Progress</h2>
+<div class="progress-container">
+<p>Operation Alpha</p>
+<div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+</div>
+<div class="progress-container">
+<p>Operation Beta</p>
+<div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+</div>
 </section>
 
-<section class="section" id="pvp">
-    <h2>PvP Division</h2>
-    <div class="grid">
-        <div class="card">Ranked Arenas</div>
-        <div class="card">Warzones</div>
-        <div class="card">Training & Taktik</div>
-    </div>
+<section class="section" id="gallery">
+<h2>Galerie</h2>
+<div class="gallery">
+<img src="https://picsum.photos/400/250?1">
+<img src="https://picsum.photos/400/250?2">
+<img src="https://picsum.photos/400/250?3">
+</div>
 </section>
 
-<section class="section" id="join">
-    <h2 data-de="Bewirb Dich" data-en="Apply Now">Bewirb Dich</h2>
-    <p data-de="Tritt unserem Imperium bei und werde Teil der Elite."
-       data-en="Join our empire and become part of the elite.">
-       Tritt unserem Imperium bei und werde Teil der Elite.
-    </p>
-    <button onclick="window.open('https://discord.gg/', '_blank')">Discord</button>
-</section>
-
-<footer>
-    © 2026 Corellia Cannabis Club – Tulak Hord
-</footer>
+<footer>© 2026 Corellia Cannabis Club – Tulak Hord</footer>
 
 <script>
-let currentLang = 'de';
-function toggleLang(){
-    currentLang = currentLang === 'de' ? 'en' : 'de';
-    document.querySelectorAll('[data-de]').forEach(el => {
-        el.innerText = el.getAttribute('data-' + currentLang);
-    });
-}
+let currentLang='de';
+function toggleLang(){alert('Sprachsystem kann bei Bedarf erweitert werden');}
 </script>
 
 </body>
