@@ -1,62 +1,69 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corellia Cannabis Club | Imperiale Elite</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corellia Cannabis Club | Imperiale Elite</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<video autoplay muted loop id="bg-video">
+  <source src="video/background.mp4" type="video/mp4">
+</video>
+
 <header>
-  <img src="images/logo.png" alt="CCC Logo">
+  <img src="images/logo.png">
   <nav>
-    <a href="#ranks">Ränge</a>
-    <a href="#progress">Progress</a>
-    <a href="#gallery">Galerie</a>
+    <a href="#ranks" data-de="Ränge" data-en="Ranks">Ränge</a>
+    <a href="#progress" data-de="Progress" data-en="Progress">Progress</a>
+    <a href="#gallery" data-de="Galerie" data-en="Gallery">Galerie</a>
   </nav>
+  <button onclick="toggleLang()" class="lang">DE / EN</button>
 </header>
 
 <section class="hero">
-  <img src="images/logo.png" alt="Corellia Cannabis Club">
-  <h1>Elite des Imperiums</h1>
-  <p>Tulak Hord • Imperium • Deutsch</p>
+  <img src="images/logo.png" class="hero-logo">
+  <h1 data-de="Elite des Imperiums" data-en="Elite of the Empire">Elite des Imperiums</h1>
+  <p>Tulak Hord • Imperium • PvE & PvP</p>
 </section>
 
-<section class="section" id="ranks">
-  <h2>Imperiale Rangstruktur</h2>
-  <div class="rank">👑 Dunkler Rat</div>
-  <div class="rank">⚔ Imperiale Offiziere</div>
-  <div class="rank">🛡 Elite-Gardisten</div>
-  <div class="rank">🔥 Kriegsveteranen</div>
-  <div class="rank">🌱 Rekruten</div>
+<section id="ranks" class="section">
+<h2 data-de="Imperiale Rangstruktur" data-en="Imperial Rank Structure">Imperiale Rangstruktur</h2>
+<div class="rank">👑 Dunkler Rat</div>
+<div class="rank">⚔ Imperiale Offiziere</div>
+<div class="rank">🛡 Elite-Gardisten</div>
+<div class="rank">🔥 Kriegsveteranen</div>
+<div class="rank">🌱 Rekruten</div>
 </section>
 
-<section class="section" id="progress">
-  <h2>Raid Progress</h2>
-  <div class="progress-container">
-    <p>Operation Alpha</p>
-    <div class="progress-bar">
-      <div class="progress-fill" data-progress="85%"></div>
-    </div>
-  </div>
+<section id="progress" class="section">
+<h2>Raid Progress</h2>
+<div class="progress">
+<div class="bar" data-progress="90%"></div>
+</div>
 </section>
 
-<section class="section" id="gallery">
-  <h2>Galerie</h2>
-  <div class="gallery">
-    <img src="images/gallery1.jpg" onclick="openLightbox(this.src)">
-    <img src="images/gallery2.jpg" onclick="openLightbox(this.src)">
-    <img src="images/gallery3.jpg" onclick="openLightbox(this.src)">
-  </div>
+<section id="gallery" class="section">
+<h2 data-de="Galerie" data-en="Gallery">Galerie</h2>
+<div class="gallery">
+<img src="images/gallery1.jpg" onclick="openLightbox(this.src)">
+<img src="images/gallery2.jpg" onclick="openLightbox(this.src)">
+<img src="images/gallery3.jpg" onclick="openLightbox(this.src)">
+</div>
 </section>
 
 <div id="lightbox" onclick="closeLightbox()">
-  <img id="lightbox-img">
+<img id="lightbox-img">
 </div>
 
-<footer>© 2026 Corellia Cannabis Club – Tulak Hord</footer>
+<footer>
+<a href="impressum.html">Impressum</a> |
+<a href="datenschutz.html">Datenschutz</a>
+<br>
+© 2026 Corellia Cannabis Club – Tulak Hord
+</footer>
 
 <script src="script.js"></script>
 </body>
