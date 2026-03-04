@@ -3,63 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Corellia Cannabis Club | Imperiale Elite</title>
+<title>Corellia Cannabis Club | Imperial Hologram</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Loader -->
 <div id="loader">
   <div class="spinner"></div>
-  <p>Entering Imperial Space...</p>
 </div>
 
-<!-- Sound -->
-<audio id="introSound" src="audio/intro.mp3"></audio>
+<!-- 3D Sternenfeld -->
+<div id="stars"></div>
 
 <header>
-  <img src="images/logo.png">
+  <img src="images/logo.png" class="logo">
   <nav>
     <a href="#ranks">Ränge</a>
-    <a href="#progress">Progress</a>
-    <a href="#gallery">Galerie</a>
+    <a href="#discord">Discord</a>
   </nav>
-  <button onclick="playIntro()">Activate Audio</button>
 </header>
 
-<section class="hero parallax">
-  <img src="images/logo.png" class="hero-logo">
-  <h1>Elite des Imperiums</h1>
-  <p>Tulak Hord • Imperium • PvE & PvP</p>
+<section class="hero">
+  <h1>IMPERIALES HOLOGRAMM INTERFACE</h1>
 </section>
 
-<section id="ranks" class="section">
-<h2>Imperiale Rangstruktur</h2>
-<div class="rank">👑 Dunkler Rat</div>
-<div class="rank">⚔ Imperiale Offiziere</div>
-<div class="rank">🛡 Elite-Gardisten</div>
-<div class="rank">🔥 Kriegsveteranen</div>
-<div class="rank">🌱 Rekruten</div>
-</section>
+<section class="hologram-grid">
 
-<section id="progress" class="section">
-<h2>Raid Progress</h2>
-<div class="progress">
-<div class="bar" data-progress="95%"></div>
-</div>
-</section>
+  <div class="holo-card">
+    <h2>Rangstruktur</h2>
+    <p>Dunkler Rat</p>
+    <p>Offiziere</p>
+    <p>Elite-Gardisten</p>
+  </div>
 
-<section id="gallery" class="section">
-<h2>Galerie</h2>
-<div class="gallery">
-<img src="images/logo.png" onclick="openLightbox(this.src)">
-</div>
-</section>
+  <div class="holo-card" id="discord">
+    <h2>Discord Live</h2>
+    <!-- Discord Widget -->
+    <iframe src="https://discord.com/widget?id=DEINE_SERVER_ID&theme=dark"
+      width="100%" height="300" allowtransparency="true"
+      frameborder="0"></iframe>
+  </div>
 
-<div id="lightbox" onclick="closeLightbox()">
-<img id="lightbox-img">
-</div>
+  <div class="holo-card">
+    <h2>Raid Status</h2>
+    <div class="progress">
+      <div class="bar" data-progress="95%"></div>
+    </div>
+  </div>
+
+</section>
 
 <footer>© 2026 Corellia Cannabis Club</footer>
 
